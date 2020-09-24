@@ -1,0 +1,55 @@
+{{# if success}}
+    <section>
+        <h2>Successful Validation!</h2>
+    </section>
+{{else}}
+    {{# if errors}}
+        <section class="error">
+            <ul>
+                {{# each errors}}
+                 <li>{{this.msg}}</li>
+                {{/each}}
+            </ul>
+        </section>
+    {{/if}}
+<form action="/flightBooking" method="post">
+    <div class="flightContainer">
+        <label for="fromCity">  
+            <span>FROM</span>
+            <br></br>
+            <input type="text" name="fromCity" value="Sydney"/>
+            <p title="SYD, Sydney Airport Australia">
+                <span>SYD, Sydney Airport Australia</span>
+            </p>
+        </label>
+        <span>
+            <span ></span>
+        </span>
+        <label for="toCity">  
+            <span>TO</span>
+            <br></br>
+            <input type="text" name="toCity" value="Melbourn"/>
+            <p title="MLB, Melbourn Airport Australia">
+                <span>MLB, Melbourn Airport Australia</span>
+            </p>
+        </label>
+        <label for="Departure">
+            <span>DEPARTURE</span>
+            <br></br>
+            <input type="date" name="departureDate"/>
+        </label>
+        <label for="return">
+            <span>RETURN</span>
+            <br></br>
+            <input type="date" name="returnDate"/>
+        </label>
+         <label for="traveller">
+            <span>TRAVELLERS&CLASS</span>
+            <br></br>
+            <input type="date"/>
+        </label>
+        <input type="submit" value="Search"/>
+    </div>
+    
+</form>
+{{/if}}

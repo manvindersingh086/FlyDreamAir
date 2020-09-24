@@ -1,0 +1,27 @@
+{{# if success}}
+    <section>
+        <h2>Successful Validation!</h2>
+    </section>
+{{else}}
+    {{# if errors}}
+        <section>
+            <ul>
+                {{# each errors}}
+                 <li>{{this.msg}}</li>
+                {{/each}}
+            </ul>
+        </section>
+    {{/if}}
+    <form action="/user" method="post">
+        <div>
+            <label>Email Id</label>
+            <input type="text" value="Manvinder" name="email" onchange="myfunction()">
+            <label>Name</label>
+            <input type="text" value="Singh" name="name">
+            <label>Password</label>
+            <input type="password" name="password">
+            <button>Submit</button>
+        </div>
+        <script type="text/javascript" src="../../public/utils/errorUser.js"></script>
+    </form>
+{{/if}}
