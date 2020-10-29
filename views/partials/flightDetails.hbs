@@ -1,0 +1,67 @@
+{{# if flights}}
+         
+        <div class="flightdetailsContainer">
+            <div>
+                <h2 style="padding-left: 360px;">Flight Details</h2>
+                <hr>
+            </div>
+            <table>
+                <tr>
+                    <th>
+                        
+                    </th>
+                    <th>    </th>
+                    <th >
+                        <label style="font-size: 20px; padding-left: 30px;">Orgin City</label>
+                    </th>
+                    <th>    </th>
+                    <th>
+                        <label style="font-size: 20px;  padding-left: 30px">Destination City</label>
+                    </th>
+                    <th>    </th>
+                    <th>
+                        <label style="font-size: 20px;  padding-left: 30px">Flight Duration</label>
+                    </th>
+                    <th>
+                        <label style="font-size: 20px;  padding-left: 30px">Flight Type</label>
+                    </th>
+                    <th>
+                        <label style="font-size: 20px;  padding-left: 30px">Flight Price</label>
+                    </th>
+                </tr>
+                {{# each flights}}
+           <form action="/flightReview?flightId={{this.id}}" method="post">
+                <tr style="border: 1px solid teal;">
+                    <th>
+                        <input type="hidden" id={{this.id}}> 
+                    </th>
+                    <th></th>
+                    <th >
+                        <label for="{{this.id}}" style="padding-left: 30px;">{{this.origin}}</label>
+                    </th>
+                    <th>    </th>
+                    <th>
+                        <label for="{{this.id}}" style="padding-left: 30px;">{{this.destination}}</label>
+                    </th>
+                    <th></th>
+                    <th>
+                        <label for="{{this.id}}" style="padding-left: 30px;">{{this.flightDuration}}</label>
+                    </th>
+                    <th>
+                        <label for="{{this.id}}" style="padding-left: 30px;">{{this.flightType}}</label>
+                    </th>
+                    <th>
+                        <label for="{{this.id}}" style="padding-left: 30px;">${{this.flightPrice}}</label>
+                    </th>
+                    <th>
+                        <button style="margin-left: 100px;" >Book Flight</button>
+                    </th>
+                 </tr>
+                </form>
+                {{/each}}
+            </table>
+            
+            </div>
+
+        
+    {{/if}}

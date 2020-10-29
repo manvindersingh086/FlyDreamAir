@@ -14,42 +14,93 @@
     {{/if}}
 <form action="/flightBooking" method="post">
     <div class="flightContainer">
+        <div style="padding-left: 170px;">
+            <h2 style="font:bold">Flight Ticket Booking</h2>
+            <hr>
+        </div>
+        <div style="padding-left: 70px;">
+
+            <input type="radio" value="Domestic" id="Domestic" name ="flightType" >
+            <label for="Domestic" >Domestic</label>
+
+            <input type="radio" value="International" id="International" name="flightType">
+            <label for="International" >Internation</label>
+        </div>
+        <hr>
+        <div style="padding-left: 70px;">
+            <input type="radio" value="oneWayTrip" id="oneWay" name ="tripType" onclick="validateTrip('oneWay')">
+            <label for="oneWayTrip" >One Way Trip</label>
+
+            <input type="radio" value="roundTrip" id="roundWay" name="tripType" onclick="validateTrip('roundWay')">
+            <label for="roundTrip" >Round Trip</label>
+        </div>
+        <hr>
+        <div style="padding-left:70px;padding-top: 20px;">
         <label for="fromCity">  
             <span>FROM</span>
             <br></br>
-            <input type="text" name="fromCity" value="Sydney"/>
+            <input type="text" name="fromCity" value="Sydney" style="width: 250px;"/>
             <p title="SYD, Sydney Airport Australia">
                 <span>SYD, Sydney Airport Australia</span>
             </p>
         </label>
-        <span>
+        <span style="width: 30px;">
             <span ></span>
         </span>
         <label for="toCity">  
             <span>TO</span>
             <br></br>
-            <input type="text" name="toCity" value="Melbourn"/>
+            <input type="text" name="toCity" value="Melbourn" style="width: 250px;"/>
             <p title="MLB, Melbourn Airport Australia">
                 <span>MLB, Melbourn Airport Australia</span>
             </p>
         </label>
+    </div>
+    <hr>
+    <div style="padding-left:70px">
         <label for="Departure">
             <span>DEPARTURE</span>
             <br></br>
-            <input type="date" name="departureDate"/>
+            <input type="date" name="departureDate" id ='departureDate' onchange="validateDate('departureDate')" />
         </label>
-        <label for="return">
+        <label for="return" id="returnTrip">
             <span>RETURN</span>
             <br></br>
-            <input type="date" name="returnDate"/>
+            <input type="date" name="returnDate" id='returnDate' onchange="validateDate('returnDate')"/>
         </label>
          <label for="traveller">
             <span>TRAVELLERS&CLASS</span>
             <br></br>
-            <input type="date"/>
+            <select style="width: 170px;height: 25px;">
+                <option>
+                    Economy
+                </option>
+                <option>
+                    Business
+                </option>
+                <option>
+                    First Class
+                </option>
+            </select>
         </label>
-        <input type="submit" value="Search"/>
     </div>
-    
+    <hr>
+    <div style="padding-left:70px">
+        <label style="padding-top: 10px;"> 
+            Adult(12+ yrs)
+        </label>
+        <label style="padding-top: 10px;padding-left: 120px;"> 
+            Child(2-11+ yrs)
+        </label>
+        <br></br>
+        <input type="number" id="adult" onchange="validateAdult()">
+        <input type="number" style="margin-left: 30px;">
+    </div>  
+    <div style="padding-left: 250px;padding-bottom: 30px;">
+         <input type="submit" value="Search Flights"/>
+    </div>
+       
+    </div>
 </form>
+
 {{/if}}

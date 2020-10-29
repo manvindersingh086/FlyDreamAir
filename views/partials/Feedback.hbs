@@ -1,24 +1,52 @@
 <form action="/feedback" method="post">
-    <div style="margin-left: 550px;margin-top: 100px ;">
-        <label>Name</label>
-        <input name = "name" type="text"/>
+<div class="login">
+    <div style="padding-left: 33%;font-size: 25px;font-family: 'Times New Roman', Times, serif;padding-top: 10px;">
+        <label>Feedback</label>
     </div>
-    <div style="margin-left: 550px;margin-top:10px ;">
-        <label>Email</label>
-        <input name="email" type="text"/>
+    <hr style="padding-bottom: 0px ;padding-top: 0px;">
+    <div >
+        <div style="padding-left: 70px;">
+            <label>Name</label>
+        </div>
+        <div style="padding-left: 70px;">
+            <input name = "name" type="text" class="input"/>
+        </div>
     </div>
-    <div style="margin-left: 490px;margin-top:10px ;">
-        <label>Feedback type</label>
-        <select name="feedbacktype" style="width: 170px;">
-            <option>Question</option>
-            <option>Suggestion</option>
-        </select>
+    <hr>
+    <div>
+         <div style="padding-left: 70px;">
+                <label>Email</label>
+         </div>
+         <div style="padding-left: 70px;">
+                <input name="email" type="text" class="input" />
+         </div>
     </div>
-    <div style="margin-left: 520px;margin-top:10px ;">
-        <label>Comments</label>
-        <textarea name="comment"></textarea>
+    <hr>
+    <div>
+        <div style="padding-left: 70px;">
+            <label>Feedback type</label>
+        </div>
+        <div style="padding-left: 70px;">
+            <select name="feedbacktype" style="width: 170px;">
+                <option>Question</option>
+                <option>Suggestion</option>
+            </select>
+        </div>
     </div>
-    <div style="margin-left: 580px;margin-top:10px ;">
-        <button>Submit Feedback</button>
+    <hr>
+    <div>
+        <div style="padding-left: 70px;">
+            <label>Comments</label>
+        </div>
+        <div style="padding-left: 70px;">
+             <textarea name="comment" class= "input"></textarea>
+        </div>
     </div>
+    <hr>
+    <div>
+        <div style="margin-top: 10px;margin-left: 30%;padding-bottom: 10px;">
+            <button style="background-color: rgb(88, 88, 196); width: 150px;color: white;font-size: 17px;font-family: 'Times New Roman', Times, serif;">Submit Feedback</button>
+        </div>
+    </div>
+</div>
 </form>

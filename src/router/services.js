@@ -7,22 +7,12 @@ const auth = require('../middleware/auth')
 const bodyparser = require('body-parser')
 const urlencodor =bodyparser.urlencoded({extended : true});
 
-router.post('/feedback',urlencodor,async (req,res) => {
-    
-    try
-    {
-        const feedback = new Feedback();
-        feedback.name = req.body.name;
-        feedback.email = req.body.email;
-        feedback.type = req.body.feedbacktype;
-        feedback.comments = req.body.comment;
-        feedback.save();
-    }
-    catch(e)
-    {
-        console.log(e);
-    }
-   
+router.get('/services',urlencodor,(req,res) => {
+    res.render('services',{layout : '../layouts/index'})
+})
+
+router.get('/giftCards',urlencodor,(req,res) => {
+    res.render('giftCards',{layout : '../layouts/index'})
 })
 
 module.exports = router;

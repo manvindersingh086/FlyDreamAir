@@ -1,0 +1,71 @@
+<body>
+    <form action="flightTravellerDetails?flightId={{flightId}}" method="post">
+        <div class="flightContainer">
+            <div>
+                <h2>Review your booking</h2>
+            </div>
+              {{# each flights}}
+                <div>
+                    <table>
+                        <tr>
+                            <th>
+                                <label>Departure City</label>
+                            </th>
+                            <th>
+                                <label>Destination City</label>
+                            </th>
+                            <th>
+                                <label>Flight Duration</label>
+                            </th>
+                            <th>
+                                <label>Flight Price</label>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>
+                                <label>{{this.origin}}</label>
+                            </th>
+                            <th>
+                                <label>{{this.destination}}</label>
+                            </th>
+                            <th>
+                                <label>{{this.flightDuration}}</label>
+                            </th>
+                            <th>
+                                <label>${{this.flightPrice}}</label>
+                            </th>
+                        </tr>
+                    </table>
+               </div>
+               {{/each}}
+            <div>
+                    <div>
+                        <h3>Important Information</h3>
+                    </div>
+                    <div>
+                        <p>A Note on Guidelines: </p>
+                        <p>
+                            Country guidelines may change without notice, hence do track travel rules and your eligibility for travel on the regulatory website of the country you are travelling to.
+                        </p>
+                    </div>
+                    <div>
+                        <p>Add-ons</p>
+                        <div>
+                            <p>Secure your trip</p>
+                            <p>See all the benefits you get for just $10 per day</p>
+                        </div>
+                        <div>
+                            <input type="radio" value="Yes, secure my trip, I agree to the Terms & Conditions & Good Health terms, and confirm all passengers are between 2 to 70 years of age">
+                        </div>
+                    </div>
+                    <div>
+
+                    </div>
+                </div>
+
+                <div>
+                    <button style="background-color: rgb(88, 88, 196); width: 150px;color: white;font-size: 20px;font-family: 'Times New Roman', Times, serif;">Continue</button>
+                </div>
+        </div>
+    </form>
+</body>

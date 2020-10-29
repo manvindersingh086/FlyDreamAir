@@ -1,10 +1,30 @@
 <form action="/userLogin" method="post">
-    <div>
-        <label>Email Id</label>
-        <input type="text"  name="email" onchange="myfunction()">
-        <label>Password</label>
-        <input type="password" name="password">
-        <button>Login</button>
+    <div class="login">
+        <div style="padding-left: 40%;font-size: 30px;font-family: 'Times New Roman', Times, serif;padding-top: 10px;">
+            <label>Login</label>
+        </div>
+        <hr style="padding-bottom: 0px ;padding-top: 0px;">
+        <div>
+            <div style="padding-left: 30px;">
+                <label>Email Id</label>
+            </div>
+            <div style="padding-left: 30px;">
+                <input type="text" style="width: 300px;height: 35px;background-color: rgb(215, 215, 223);font-family: 'Times New Roman', Times, serif;font-size: 20px;border:thin;" name="email" onchange="myfunction()">
+            </div>       
+        </div>
+        <hr style="padding-bottom: 0px ;padding-top: 0px;">
+        <div>
+            <div style="padding-left: 30px;">
+                <label>Password</label>
+            </div>
+            <div style="padding-left: 30px;">
+                <input type="password" name="password" style="width: 300px;height: 35px;background-color: rgb(215, 215, 223);border:thin;"> 
+            </div>
+        </div>
+        <hr style="padding-bottom: 0px ;padding-top: 0px;">
+        <div style="margin-top: 50px;margin-left: 30%;">
+            <button style="background-color: rgb(88, 88, 196); width: 150px;color: white;font-size: 20px;font-family: 'Times New Roman', Times, serif;">Login</button>
+        </div>
     </div>
     <script type="text/javascript" src="../../public/utils/errorUser.js"></script>
 </form>
