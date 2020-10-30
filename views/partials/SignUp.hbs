@@ -1,27 +1,47 @@
-{{# if success}}
-    <section>
-        <h2>Successful Validation!</h2>
-    </section>
-{{else}}
-    {{# if errors}}
-        <section>
-            <ul>
-                {{# each errors}}
-                 <li>{{this.msg}}</li>
-                {{/each}}
-            </ul>
-        </section>
-    {{/if}}
-    <form action="/user" method="post">
-        <div>
-            <label>Email Id</label>
-            <input type="text" value="Manvinder" name="email" onchange="myfunction()">
-            <label>Name</label>
-            <input type="text" value="Singh" name="name">
-            <label>Password</label>
-            <input type="password" name="password">
-            <button>Submit</button>
+<form action="/user" onsubmit="return validateSignUp('finalValidate')"  method="post">
+    <div class="login">
+        <div style="padding-left: 35%;font-size: 30px;font-family: 'Times New Roman', Times, serif;padding-top: 10px;">
+            <label>Sign Up</label>
         </div>
-        <script type="text/javascript" src="../../public/utils/errorUser.js"></script>
-    </form>
-{{/if}}
+        <hr style="padding-bottom: 0px ;padding-top: 0px;">
+        <div>
+            <div style="padding-left: 30px;">
+                <label>Email</label>
+            </div>
+            <div style="padding-left: 30px;">
+                <input id="email" onchange="validateSignUp('email')" type="text" style="width: 300px;height: 35px;background-color: rgb(215, 215, 223);font-family: 'Times New Roman', Times, serif;font-size: 20px;border:thin;" name="email">
+            </div>       
+        </div>
+        <hr style="padding-bottom: 0px ;padding-top: 0px;">
+        <div>
+            <div style="padding-left: 30px;">
+                <label>Name</label>
+            </div>
+            <div style="padding-left: 30px;">
+                <input onchange="validateSignUp('username')" id="username" type="text" name="username" style="width: 300px;height: 35px;background-color: rgb(215, 215, 223);border:thin;"> 
+            </div>
+        </div>
+        <hr style="padding-bottom: 0px ;padding-top: 0px;">
+        <div>
+            <div style="padding-left: 30px;">
+                <label>Password</label>
+            </div>
+            <div style="padding-left: 30px;">
+                <input onchange="validateSignUp('password')" id="password" type="password" name="password" style="width: 300px;height: 35px;background-color: rgb(215, 215, 223);border:thin;"> 
+            </div>
+        </div>
+        <div>
+            <div style="padding-left: 30px;">
+                <label>Confirm Password</label>
+            </div>
+            <div style="padding-left: 30px;">
+                <input onchange="validateSignUp('confirmPassword')" id="confirmPassword" type="password"  style="width: 300px;height: 35px;background-color: rgb(215, 215, 223);border:thin;"> 
+            </div>
+        </div>
+        <hr style="padding-bottom: 0px ;padding-top: 0px;">
+        <div style="margin-top: 20px;margin-left: 30%;margin-bottom: 10px;">
+            <button style="background-color: rgb(88, 88, 196); width: 150px;color: white;font-size: 20px;font-family: 'Times New Roman', Times, serif;">Sign Up</button>
+        </div>
+    </div>
+</form>
+</div>

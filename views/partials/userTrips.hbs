@@ -1,0 +1,82 @@
+
+        
+       
+        <div class="flightContainer">
+            
+            <div>
+                <h2 style="padding-left: 240px;">My Trips</h2>
+                <hr>
+            </div>
+            
+            
+                    <div >
+                         <table>
+                <tr>
+                    <th>
+                        
+                    </th>
+                    <th>    </th>
+                    <th >
+                        <label style="font-size: 20px; padding-left: 30px;">Orgin City</label>
+                    </th>
+                    <th>    </th>
+                    <th>
+                        <label style="font-size: 20px;  padding-left: 30px">Destination City</label>
+                    </th>
+                    <th>    </th>
+                    <th>
+                        <label style="font-size: 20px;  padding-left: 30px">Flight Duration</label>
+                    </th>
+                    <th>
+                        <label style="font-size: 20px;  padding-left: 30px">Flight Type</label>
+                    </th>
+                    <th>
+                        <label style="font-size: 20px;  padding-left: 30px">Flight Price</label>
+                    </th>
+                </tr>
+                
+                {{# each flights}}
+            <form action=""  method="post"> 
+                <tr style="border: 1px solid teal;">
+                    <th>
+                        <input type="hidden" id={{this.id}}> 
+                    </th>
+                    <th></th>
+                    <th >
+                        <label for="{{this.id}}" style="padding-left: 30px;">{{this.origin}}</label>
+                    </th>
+                    <th>    </th>
+                    <th>
+                        <label for="{{this.id}}" style="padding-left: 30px;">{{this.destination}}</label>
+                    </th>
+                    <th></th>
+                    <th>
+                        <label for="{{this.id}}" style="padding-left: 25px;padding-top: 5px;">{{this.flightDuration}}</label>
+                    </th>
+                    <th>
+                        <label for="{{this.id}}" style="padding-left: 30px;">{{this.flightType}}</label>
+                    </th>
+                    <th>
+                        <label for="{{this.id}}" style="padding-left: 30px;">${{this.flightPrice}}</label>
+                    </th>
+                    <th>
+                        
+                        <div style="width:170px;padding-bottom: 5px;">
+                             <a href='/inFlightServices?flightId={{this.id}}' style="text-decoration: none; padding-top: 3px; padding-bottom: 3px; padding-right: 6px;padding-left: 6px; background-color: rgb(88, 88, 196); width: 150px;color: white;font-size: 20px;font-family: 'Times New Roman', Times, serif;">In-flight Services</a> 
+                        </div>
+                        <div style="margin-left: 10px;margin-bottom: 5px;">
+                             <a href="/cancelFlightBooking" style="text-decoration: none; padding-top: 3px; padding-bottom: 3px; padding-right: 6px;padding-left: 6px; background-color: rgb(88, 88, 196); width: 150px;color: white;font-size: 20px;font-family: 'Times New Roman', Times, serif;">Cancel Flight</a> 
+
+                        </div>
+                    </th>
+                 </tr>
+                </form>
+                {{/each}}
+            </table>
+                </div>
+              
+             
+               <div>
+                   &nbsp;
+               </div>
+            </div>

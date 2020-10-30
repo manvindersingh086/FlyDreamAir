@@ -1,4 +1,4 @@
-<form action="/userLogin" method="post">
+<form action="/userLogin" onsubmit="return validateLogin()" method="post">
     <div class="login">
         <div style="padding-left: 40%;font-size: 30px;font-family: 'Times New Roman', Times, serif;padding-top: 10px;">
             <label>Login</label>
@@ -9,7 +9,7 @@
                 <label>Email Id</label>
             </div>
             <div style="padding-left: 30px;">
-                <input type="text" style="width: 300px;height: 35px;background-color: rgb(215, 215, 223);font-family: 'Times New Roman', Times, serif;font-size: 20px;border:thin;" name="email" onchange="myfunction()">
+                <input type="text" id="email" style="width: 300px;height: 35px;background-color: rgb(215, 215, 223);font-family: 'Times New Roman', Times, serif;font-size: 20px;border:thin;" name="email" >
             </div>       
         </div>
         <hr style="padding-bottom: 0px ;padding-top: 0px;">
@@ -18,7 +18,7 @@
                 <label>Password</label>
             </div>
             <div style="padding-left: 30px;">
-                <input type="password" name="password" style="width: 300px;height: 35px;background-color: rgb(215, 215, 223);border:thin;"> 
+                <input type="password" id="password" name="password" style="width: 300px;height: 35px;background-color: rgb(215, 215, 223);border:thin;"> 
             </div>
         </div>
         <hr style="padding-bottom: 0px ;padding-top: 0px;">

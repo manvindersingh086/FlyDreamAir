@@ -14,13 +14,17 @@ router.post('/feedback',urlencodor,async (req,res) => {
         const feedback = new Feedback();
         feedback.name = req.body.name;
         feedback.email = req.body.email;
-        feedback.type = req.body.feedbacktype;
-        feedback.comments = req.body.comment;
+        feedback.type = req.body.feedbackType;
+        feedback.comments = req.body.comments;
         feedback.save();
+
+        res.render('successFeedback',{layout : '../layouts/index'});
+
     }
     catch(e)
     {
-        console.log(e);
+        res.render('errorFeedback',{layout : '../layouts/index'})
+
     }
    
 })

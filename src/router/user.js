@@ -6,42 +6,58 @@ const router = express.Router()
 const auth = require('../middleware/auth')
 const bodyparser = require('body-parser')
 const {sendWelcomeEmail,sendGoodByeMail} = require('../Emails/accounts')
+const ObjectId = require('mongodb').ObjectID
+const swal = require('sweetalert');
 
 const urlencodor =bodyparser.urlencoded({extended : true});
 
-router.post('/user',urlencodor,[
-     check('email','Invalid email id').isEmail(),
-     check('password','Invalid password').isLength({min : 4})
-],async (req,res) => {
+router.post('/user',urlencodor,async (req,res) => {
      try
      {
-          const errors = validationResult(req);
-          if (!errors.isEmpty()) 
-          {
-               res.render('SignUp',{layout : '../layouts/index',success:false,errors:errors.array()})
-          }
           const user = new User();
-          user.name = req.body.name;
+          user.name = req.body.username;
           user.email = req.body.email;
           user.password = req.body.password;
+          
           //sendWelcomeEmail(req.body.email,req.body.name);
           user.save()
           const token= await user.generateToken();
           res.session.success = true;
-          //console.log(token)  
+          
+          
      }
      catch(e)
      {
-          res.status(400).send(e)
+         // res.status(400).send(e)
+         res.render('errorSignUp',{layout : '../layouts/index'})
      }
+
+     res.render('home',{layout : '../layouts/index',email:req.body.email,tokens:user.tokens,token:token})
 });
 
 router.post('/userLogin',urlencodor,async (req,res) => {
      try
      {
+          req.session.useremail= req.body.email;
+          console.log(req.body.email);
+          console.log(req.body.password);
           const user = await User.findUserByCredentials(req.body.email,req.body.password)
           const token = await user.generateToken()
+          
           res.render('userHome',{layout : '../layouts/index',email:req.body.email,tokens:user.tokens,token:token})
+     }
+     catch(e)
+     {
+          res.render('errorLogin',{layout : '../layouts/index'})
+     }
+});
+
+router.get('/userProfile',urlencodor,async (req,res) => {
+     try
+     {
+          
+          const user = await User.findUserByCredentials(req.query.email,undefined)
+          res.render('userProfile',{layout : '../layouts/index',email:req.query.email,userId:user._id})
      }
      catch(e)
      {
@@ -49,17 +65,16 @@ router.post('/userLogin',urlencodor,async (req,res) => {
      }
 });
 
-router.get('/userProfile',auth,urlencodor,async (req,res) => {
+router.post('/userUpdate',urlencodor, async (req,res) => {
      try
      {
-          
-          const user = await User.findUserByCredentials(req.query.email,undefined)
-          console.log(user)
-          res.render('userProfile',{layout : '../layouts/index',email:req.query.email})
+          console.log(req.query.userId)
+          const user = await User.updateOne({_id :ObjectId(req.query.userId)},{$set: {email: req.body.email}});
+          res.render('userHome',{layout : '../layouts/index'});
      }
      catch(e)
      {
-          res.status(400).send(e)  
+          res.status(400).send(e);
      }
 });
 

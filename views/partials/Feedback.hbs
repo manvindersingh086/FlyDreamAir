@@ -1,33 +1,33 @@
-<form action="/feedback" method="post">
+<form action="/feedback" onsubmit="return validateFeedback()" method="post">
 <div class="login">
     <div style="padding-left: 33%;font-size: 25px;font-family: 'Times New Roman', Times, serif;padding-top: 10px;">
         <label>Feedback</label>
     </div>
     <hr style="padding-bottom: 0px ;padding-top: 0px;">
     <div >
-        <div style="padding-left: 70px;">
+        <div style="padding-left: 30px;">
             <label>Name</label>
         </div>
-        <div style="padding-left: 70px;">
-            <input name = "name" type="text" class="input"/>
+        <div style="padding-left: 30px;">
+            <input id="name" name = "name" style="width: 300px;height: 35px;background-color: rgb(215, 215, 223);font-family: 'Times New Roman', Times, serif;font-size: 20px;border:thin;" type="text" class="input"/>
         </div>
     </div>
     <hr>
     <div>
-         <div style="padding-left: 70px;">
+         <div style="padding-left: 30px;">
                 <label>Email</label>
          </div>
-         <div style="padding-left: 70px;">
-                <input name="email" type="text" class="input" />
+         <div style="padding-left: 30px;">
+                <input id="email" name="email" onchange="validateFeedback()" type="text" class="input" style="width: 300px;height: 35px;background-color: rgb(215, 215, 223);font-family: 'Times New Roman', Times, serif;font-size: 20px;border:thin;"/>
          </div>
     </div>
     <hr>
     <div>
-        <div style="padding-left: 70px;">
+        <div style="padding-left: 30px;">
             <label>Feedback type</label>
         </div>
-        <div style="padding-left: 70px;">
-            <select name="feedbacktype" style="width: 170px;">
+        <div style="padding-left: 30px;">
+            <select id="feedbackType" name="feedbackType" style="width: 170px;">
                 <option>Question</option>
                 <option>Suggestion</option>
             </select>
@@ -35,11 +35,11 @@
     </div>
     <hr>
     <div>
-        <div style="padding-left: 70px;">
+        <div style="padding-left: 30px;">
             <label>Comments</label>
         </div>
-        <div style="padding-left: 70px;">
-             <textarea name="comment" class= "input"></textarea>
+        <div style="padding-left: 30px;">
+             <textarea id="comments" name="comments" class= "input"></textarea>
         </div>
     </div>
     <hr>

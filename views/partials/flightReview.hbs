@@ -2,42 +2,44 @@
     <form action="flightTravellerDetails?flightId={{flightId}}" method="post">
         <div class="flightContainer">
             <div>
-                <h2>Review your booking</h2>
+                <h2 style="padding-left: 180px;">Review your booking</h2>
             </div>
+            <hr>
               {{# each flights}}
                 <div>
-                    <table>
+                    <table style="border: 1px solid;">
                         <tr>
-                            <th>
+                            <th style="padding-left: 8px;">
                                 <label>Departure City</label>
                             </th>
-                            <th>
+                            <th style="padding-left: 58px;">
                                 <label>Destination City</label>
                             </th>
-                            <th>
+                            <th style="padding-left: 58px;">
                                 <label>Flight Duration</label>
                             </th>
-                            <th>
+                            <th style="padding-left: 58px;padding-right: 10px;">
                                 <label>Flight Price</label>
                             </th>
                         </tr>
                         <tr>
-                            <th>
+                            <th style="padding-left: 8px;">
                                 <label>{{this.origin}}</label>
                             </th>
-                            <th>
+                            <th style="padding-left: 58px;">
                                 <label>{{this.destination}}</label>
                             </th>
-                            <th>
+                            <th style="padding-left: 58px;">
                                 <label>{{this.flightDuration}}</label>
                             </th>
-                            <th>
+                            <th style="padding-left: 58px;">
                                 <label>${{this.flightPrice}}</label>
                             </th>
                         </tr>
                     </table>
                </div>
                {{/each}}
+               <hr>
             <div>
                     <div>
                         <h3>Important Information</h3>
@@ -48,23 +50,12 @@
                             Country guidelines may change without notice, hence do track travel rules and your eligibility for travel on the regulatory website of the country you are travelling to.
                         </p>
                     </div>
-                    <div>
-                        <p>Add-ons</p>
-                        <div>
-                            <p>Secure your trip</p>
-                            <p>See all the benefits you get for just $10 per day</p>
-                        </div>
-                        <div>
-                            <input type="radio" value="Yes, secure my trip, I agree to the Terms & Conditions & Good Health terms, and confirm all passengers are between 2 to 70 years of age">
-                        </div>
-                    </div>
-                    <div>
-
-                    </div>
+                    
                 </div>
 
                 <div>
-                    <button style="background-color: rgb(88, 88, 196); width: 150px;color: white;font-size: 20px;font-family: 'Times New Roman', Times, serif;">Continue</button>
+                    <button style="margin-bottom: 10px;margin-left: 120px; background-color: rgb(88, 88, 196); width: 150px;color: white;font-size: 20px;font-family: 'Times New Roman', Times, serif;">Continue</button>
+                    <a href="/flightBooking" style=" text-decoration:none;padding-top:7px;padding-bottom:7px;border:1px solid;padding-left:36px;padding-right:36px;margin-left: 40px; background-color: rgb(88, 88, 196); width: 150px;color: white;font-size: 20px;font-family: 'Times New Roman', Times, serif;">Cancel</a> 
                 </div>
         </div>
     </form>
