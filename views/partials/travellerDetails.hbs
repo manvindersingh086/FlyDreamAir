@@ -1,5 +1,5 @@
 <body>
-    <form name="passenger" action="paymentPage" onsubmit="return validatflightContainerePassenger()" method="post">
+    <form name="passenger" action="/seatSelection"  onsubmit="return validatePassenger('{{adultCount}}')" method="post">
         <div class="flightContainer">
             <div>
                 <h2 style="padding-left: 240px;">Traveller Details</h2>
@@ -45,8 +45,7 @@
                        
                     </div>
                    <div>
-                       
-                       <a onclick="addAdult()">Add Adult</a>
+                       <a onclick="addAdult('{{flightType}}','{{adultCount}}')">Add Adult</a>
                    </div>
             <hr>
                    <div>
@@ -73,7 +72,7 @@
                     <label>By clicking on the Continue button below to proceed with the booking, I confirm that I have read and I accept the Fare Rules , the Privacy Policy , the User Agreement and Terms of Service of FlyDreamAir</label>
                 </div>
                 <div>
-                    <button    style="background-color: rgb(88, 88, 196); width: 150px;color: white;font-size: 14px;font-family: 'Times New Roman', Times, serif;width:180px;margin-left: 250px;margin-bottom: 10px;margin-top: 15px;">Proceed to payment page</button>
+                    <button    style="background-color: rgb(88, 88, 196); width: 150px;color: white;font-size: 14px;font-family: 'Times New Roman', Times, serif;width:180px;margin-left: 250px;margin-bottom: 10px;margin-top: 15px;">Proceed to seat selection</button>
                 </div>
         </div>
     </form>

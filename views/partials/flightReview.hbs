@@ -1,14 +1,17 @@
 <body>
     <form action="flightTravellerDetails?flightId={{flightId}}" method="post">
-        <div class="flightContainer">
+        <div class="flightContainer" style="width:950px">
             <div>
-                <h2 style="padding-left: 180px;">Review your booking</h2>
+                <h2 style="padding-left: 300px;">Review your booking</h2>
             </div>
             <hr>
               {{# each flights}}
                 <div>
                     <table style="border: 1px solid;">
                         <tr>
+                            <th style="padding-left: 8px;">
+                                <label>Flight Name</label>
+                            </th>
                             <th style="padding-left: 8px;">
                                 <label>Departure City</label>
                             </th>
@@ -21,8 +24,23 @@
                             <th style="padding-left: 58px;padding-right: 10px;">
                                 <label>Flight Price</label>
                             </th>
+                            <th style="padding-left: 58px;padding-right: 10px;">
+                                <label>Flight Date</label>
+                            </th>
+                            <th style="padding-left: 58px;padding-right: 10px;">
+                                <label>Flight Type</label>
+                            </th>
+                            <th style="padding-left: 58px;padding-right: 10px;">
+                                <label>Flight Transit Location</label>
+                            </th>
+                            <th style="padding-left: 58px;padding-right: 10px;">
+                                <label>Flight Transit Time</label>
+                            </th>
                         </tr>
                         <tr>
+                            <th style="padding-left: 8px;">
+                                <label>{{this.flightAirlineName}}</label>
+                            </th>
                             <th style="padding-left: 8px;">
                                 <label>{{this.origin}}</label>
                             </th>
@@ -34,6 +52,18 @@
                             </th>
                             <th style="padding-left: 58px;">
                                 <label>${{this.flightPrice}}</label>
+                            </th>
+                            <th style="padding-left: 58px;">
+                                <label>{{this.departureDate}}</label>
+                            </th>
+                            <th style="padding-left: 58px;">
+                                <label>{{this.flightT}}</label>
+                            </th>
+                            <th style="padding-left: 58px;">
+                                <label>{{this.transitLocation}}</label>
+                            </th>
+                            <th style="padding-left: 58px;">
+                                <label>{{this.transitLocTime}}</label>
                             </th>
                         </tr>
                     </table>
@@ -54,7 +84,7 @@
                 </div>
 
                 <div>
-                    <button style="margin-bottom: 10px;margin-left: 120px; background-color: rgb(88, 88, 196); width: 150px;color: white;font-size: 20px;font-family: 'Times New Roman', Times, serif;">Continue</button>
+                    <button style="margin-bottom: 10px;margin-left: 240px; background-color: rgb(88, 88, 196); width: 150px;color: white;font-size: 20px;font-family: 'Times New Roman', Times, serif;">Continue</button>
                     <a href="/flightBooking" style=" text-decoration:none;padding-top:7px;padding-bottom:7px;border:1px solid;padding-left:36px;padding-right:36px;margin-left: 40px; background-color: rgb(88, 88, 196); width: 150px;color: white;font-size: 20px;font-family: 'Times New Roman', Times, serif;">Cancel</a> 
                 </div>
         </div>

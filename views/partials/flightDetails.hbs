@@ -1,6 +1,6 @@
 {{# if flights}}
          
-        <div class="flightdetailsContainer">
+        <div class="flightdetailsContainer" style="width: 80%;margin-left: 200px;">
             <div>
                 <h2 style="padding-left: 360px;">Flight Details</h2>
                 <hr>
@@ -11,6 +11,10 @@
                         
                     </th>
                     <th>    </th>
+                    <th >
+                        <label style="font-size: 20px; padding-left: 30px;">Flight Airline</label>
+                    </th>
+                    <th>     </th>
                     <th >
                         <label style="font-size: 20px; padding-left: 30px;">Orgin City</label>
                     </th>
@@ -28,6 +32,12 @@
                     <th>
                         <label style="font-size: 20px;  padding-left: 30px">Flight Price</label>
                     </th>
+                    <th>
+                         <label style="font-size: 20px;  padding-left: 30px">Flight Date</label>
+                    </th>
+                    <th>
+                         <label style="font-size: 20px;  padding-left: 30px">Flight Type</label>
+                    </th>
                 </tr>
                 {{# each flights}}
            <form action="/flightReview?flightId={{this.id}}" method="post">
@@ -36,6 +46,10 @@
                         <input type="hidden" id={{this.id}}> 
                     </th>
                     <th></th>
+                    <th >
+                        <label for="{{this.id}}" style="padding-left: 30px;">{{this.flightAirlineName}}</label>
+                    </th>
+                    <th>    </th>
                     <th >
                         <label for="{{this.id}}" style="padding-left: 30px;">{{this.origin}}</label>
                     </th>
@@ -54,7 +68,15 @@
                         <label for="{{this.id}}" style="padding-left: 30px;">${{this.flightPrice}}</label>
                     </th>
                     <th>
-                        <button style="margin-left: 100px;" >Book Flight</button>
+                        <label for="{{this.id}}" style="padding-left: 30px;">{{this.departureDate}}</label>
+                    </th>
+                    <th>
+                        <label for="{{this.id}}" style="padding-left: 30px;">{{this.flightT}}</label>
+                    </th>
+                    <th>
+                        <button style="margin-left: 50px;width:100px;margin-bottom: 5px;margin-right: 10px;" >Flight Details</button>
+                        <br>
+                        <button style="margin-left: 50px;width:100px;margin-bottom: 5px;margin-right: 10px;" >Book Flight</button>
                     </th>
                  </tr>
                 </form>

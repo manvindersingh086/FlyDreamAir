@@ -1,5 +1,5 @@
 
-
+var count=0;
 function validateTrip(tripType)
         {
             if(tripType == 'oneWay')
@@ -47,8 +47,11 @@ function validateAdult()
     }
 }
 
-function addAdult()
+function addAdult(flightType,adultCount)
 {
+    if(count<adultCount)
+    {
+        count = count+1;
     var div = document.createElement('div');
     div.setAttribute('id','passenger');
      var table = document.createElement('table');
@@ -56,6 +59,7 @@ function addAdult()
      var tr2    = document.createElement('tr');
      var tr3    = document.createElement('tr');
      var tr4    = document.createElement('tr');
+     
 
      var th1   = document.createElement('th');
      var th2   = document.createElement('th');
@@ -71,6 +75,8 @@ function addAdult()
      th4.innerHTML += "<label>Meal</label>";
      th5.innerHTML += "<label>Wheel Chair</label>";
      th6.innerHTML += "<label>Date of Birth</label>";
+    
+   
 
      tr1.appendChild(th1);
      tr1.appendChild(th2);
@@ -82,37 +88,28 @@ function addAdult()
      var td1    = document.createElement('th')
      var input = document.createElement('input');
      input.setAttribute('type','text');
-     input.setAttribute('id','passenger');
+     input.setAttribute('id','firstName');
+     input.setAttribute('name','firstName');
      input.setAttribute('style','height:30px');
      td1.appendChild(input);
 
      var td2    = document.createElement('th')
      var input1 = document.createElement('input');
      input1.setAttribute('type','text');
-     input1.setAttribute('id','passenger');
+     input1.setAttribute('id','lastName');
+     input1.setAttribute('name','lastName');
      input1.setAttribute('style','height:30px');
     td2.appendChild(input1);
 
      var td3    = document.createElement('th')
-     var input2 = document.createElement('input');
-     input2.setAttribute('style','height:30px');
-     input2.setAttribute('type','text');
-     input2.setAttribute('id','passenger');
-     td3.appendChild(input2);
+     td3.innerHTML += "<select style='height:30px;width:180px' id='gender' name='gender'><option>Male</option><option>Female</option></select>";
+
 
      var td4    = document.createElement('th')
-    //  var input3 = document.createElement('option');
-    //  input3.setAttribute('type','text');
-    //  input3.setAttribute('id','passenger');
-     td4.innerHTML += "<select style='height:30px;width:180px'><option>Vegetarian</option><option>Non-Vegetarian</option></select>";
+     td4.innerHTML += "<select id='meal' name='meal' style='height:30px;width:180px'><option>Vegetarian</option><option>Non-Vegetarian</option></select>";
 
      var td5    = document.createElement('th')
-    //  var input4 = document.createElement('input');
-    //  input4.setAttribute('type','text');
-    //  input4.setAttribute('id','passenger');
-    //  input4.setAttribute('style','height:30px');
-
-    td5.innerHTML += "<select style='height:30px;width:180px'><option>Not-Required</option><option>Required</option></select>";
+     td5.innerHTML += "<select id='wheelChair' name='wheelChair' style='height:30px;width:180px'><option>Not-Required</option><option>Required</option></select>";
 
      var td6    = document.createElement('th')
      var input5 = document.createElement('input');
@@ -132,15 +129,55 @@ function addAdult()
      table.appendChild(tr2);
      table.appendChild(tr3);
      table.appendChild(tr4);
+   
+     var tr5,tr6,th7,th8;
+     if(flightType == 'International')
+     {
+         tr5    = document.createElement('tr');
+         tr6    = document.createElement('tr');
+         th7   = document.createElement('th');
+         th8   = document.createElement('th');
+        th7.innerHTML += "<label>Passport Number</label>";
+        th8.innerHTML += "<label>Passport Name</label>";
+
+        var tdP1    = document.createElement('th')
+        var inputP = document.createElement('input');
+        inputP.setAttribute('type','text');
+        inputP.setAttribute('id','passportNumber');
+        inputP.setAttribute('name','passportNumber');
+        inputP.setAttribute('style','height:30px');
+        tdP1.appendChild(inputP);
+
+     var tdP2    = document.createElement('th')
+     var inputP2 = document.createElement('input');
+     inputP2.setAttribute('type','text');
+     inputP2.setAttribute('id','passportName');
+     inputP2.setAttribute('name','passportName');
+     inputP2.setAttribute('style','height:30px');
+     tdP2.appendChild(inputP2);
+
+        tr5.appendChild(th7);
+        tr5.appendChild(th8);
+        tr6.appendChild(tdP1);
+        tr6.appendChild(tdP2);
+        table.appendChild(tr5);
+        table.appendChild(tr6);
+     }
      div.appendChild(table);
       var node = document.getElementById("adultAdd");
      node.appendChild(div);
+    }
 }
 
-function validatePassenger()
+function validatePassenger(passengerCount)
 {
     var childrn = document.getElementById("adultAdd").getElementsByTagName("div");
 
+    if(count < passengerCount)
+    {
+        alert('Please add valid number of passengers as mentioned on the flight search page.');
+        return false;
+    }
     if(childrn.length == 0)
     {
         alert('Please enter passenger details !');
@@ -182,4 +219,57 @@ function validatePassenger()
     
    //sessionStorage.setItem('passenger','Hiii');
     return true;
+}
+
+function validateFlightBooking()
+{
+    var departureDate = document.getElementById('departureDate');
+    var returnDate = document.getElementById('returnDate');
+    var flightType = document.getElementById('roundWay').checked;
+
+    
+     if(departureDate.value == "" || departureDate.value == null)
+     {
+         alert('Departure date is mandatory!');
+         return false;
+     }
+     if(flightType == true && (returnDate.value == "" || returnDate.value == null))
+     {
+         alert('Return date is mandatory!');
+         return false;
+     }
+    return true;
+}
+
+function validateSeats(passengerCount)
+{
+    var A1= document.getElementById('1A').checked;
+    var B1= document.getElementById('1B').checked;
+    var C1= document.getElementById('1C').checked;
+    var D1= document.getElementById('1D').checked;
+    var E1= document.getElementById('1E').checked;
+    var F1= document.getElementById('1F').checked;
+
+    var count=0;
+
+    if(A1==true)
+    {
+        count = count++;
+    }
+    if(B1 == true)
+    {
+        count++;
+    }
+    if(C1 == true)
+    {
+        count++;
+    }
+    if(count > passengerCount)
+    {
+      alert('Invalid Seat Selection!'); 
+      return false;  
+    }
+
+    return true;
+    
 }

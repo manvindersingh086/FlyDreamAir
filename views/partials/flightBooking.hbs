@@ -12,7 +12,7 @@
             </ul>
         </section>
     {{/if}}
-<form action="/flightBooking" method="post">
+<form action="/flightBooking" onsubmit="return validateFlightBooking()" method="post">
     <div class="flightContainer">
         <div style="padding-left: 170px;">
             <h2 style="font:bold">Flight Ticket Booking</h2>
@@ -20,7 +20,7 @@
         </div>
         <div style="padding-left: 70px;">
 
-            <input type="radio" value="Domestic" id="Domestic" name ="flightType" >
+            <input type="radio" value="Domestic" id="Domestic" checked="checked" name ="flightType" >
             <label for="Domestic" >Domestic</label>
 
             <input type="radio" value="International" id="International" name="flightType">
@@ -31,7 +31,7 @@
             <input type="radio" value="oneWayTrip" id="oneWay" name ="tripType" onclick="validateTrip('oneWay')">
             <label for="oneWayTrip" >One Way Trip</label>
 
-            <input type="radio" value="roundTrip" id="roundWay" name="tripType" onclick="validateTrip('roundWay')">
+            <input type="radio" value="roundTrip" id="roundWay" checked="checked" name="tripType" onclick="validateTrip('roundWay')">
             <label for="roundTrip" >Round Trip</label>
         </div>
         <hr>
@@ -41,7 +41,7 @@
             <br></br>
             <input type="text" name="fromCity" value="Sydney" style="width: 250px;"/>
             <p title="SYD, Sydney Airport Australia">
-                <span>SYD, Sydney Airport Australia</span>
+                <span>&nbsp;</span>
             </p>
         </label>
         <span style="width: 30px;">
@@ -50,36 +50,70 @@
         <label for="toCity">  
             <span>TO</span>
             <br></br>
-            <input type="text" name="toCity" value="Melbourn" style="width: 250px;"/>
+            <input type="text" name="toCity" value="Melbourne" style="width: 250px;"/>
             <p title="MLB, Melbourn Airport Australia">
-                <span>MLB, Melbourn Airport Australia</span>
+                <span>&nbsp;</span>
             </p>
         </label>
     </div>
     <hr>
     <div style="padding-left:70px">
         <label for="Departure">
-            <span>DEPARTURE</span>
+            <span >DEPARTURE</span>
             <br></br>
             <input type="date" name="departureDate" id ='departureDate' onchange="validateDate('departureDate')" />
         </label>
         <label for="return" id="returnTrip">
-            <span>RETURN</span>
+            <span style="margin-left:43px;">RETURN</span>
             <br></br>
-            <input type="date" name="returnDate" id='returnDate' onchange="validateDate('returnDate')"/>
+            <input style="margin-left:43px;" type="date" name="returnDate" id='returnDate' onchange="validateDate('returnDate')"/>
         </label>
          <label for="traveller">
-            <span>TRAVELLERS&CLASS</span>
+            <span style="margin-left:43px;">CLASS</span>
             <br></br>
-            <select style="width: 170px;height: 25px;">
-                <option>
+            <select id="airlineClass" name="airlineClass" style="margin-left:43px;width: 170px;height: 25px;">
+                <option value="economy">
                     Economy
                 </option>
-                <option>
+                <option value="business">
                     Business
                 </option>
-                <option>
+                <option value="firstClass">
                     First Class
+                </option>
+            </select>
+        </label>
+        <br>
+        <label for="traveller">
+            <span>AIRLINE SELECTION</span>
+            <br></br>
+            <select id="airlineName" name="airlineName" style="width: 170px;height: 25px;">
+                <option value="none">
+                    None
+                </option>
+                <option value="Qantas">
+                    Qantas
+                </option>
+                <option value="Virgin Australia">
+                    Virgin Australia
+                </option>
+                <option value="JetStar">
+                    JetStar
+                </option>
+            </select>
+        </label>
+        <label for="traveller">
+            <span style="margin-left:20px;">FLIGHT TYPE</span>
+            <br></br>
+            <select id="flightT" name="flightT" style="margin-left:20px; width: 170px;height: 25px;">
+                <option value="none">
+                    None
+                </option>
+                <option value="Non Stop">
+                    Non-Stop
+                </option>
+                <option value="In Transit">
+                    In-transit
                 </option>
             </select>
         </label>
@@ -89,12 +123,12 @@
         <label style="padding-top: 10px;"> 
             Adult(12+ yrs)
         </label>
-        <label style="padding-top: 10px;padding-left: 120px;"> 
+        <label style="padding-top: 10px;padding-left: 110px;"> 
             Child(2-11+ yrs)
         </label>
         <br></br>
-        <input type="number" id="adult" onchange="validateAdult()">
-        <input type="number" style="margin-left: 30px;">
+        <input type="number"value="0"  id="adult" name="adult" onchange="validateAdult()">
+        <input type="number" value="0" name="child" style="margin-left: 20px;">
     </div>  
     <div style="padding-left: 250px;padding-bottom: 30px;">
          <input type="submit" value="Search Flights"/>

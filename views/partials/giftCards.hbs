@@ -1,52 +1,111 @@
-<form>
-    <div>
-        <h2>Select Occassion</h2>
-        <h3>Christmas</h3>
-        <h3>New Year</h3>
-        <h3>Birthday</h3>
-        <h3>Anniversary</h3>
+<form action="/paymentPage" method="post">
+    <div class="flightdetailsContainer" style="margin-left: 400px; height: 820px;width:520px">
+        <div>
+                <h2 style="padding-left: 190px;">Gift Cards</h2>
+        </div>
+            <hr>
+        <div>
+        <div>
+            <h3>Select Occassion</h2>
+            <div>
+                <input type="radio" id="ocassion" name="ocassion">
+                <label for="ocassion" >Christmas</label>
+                <input type="radio" id="ocassion" name="ocassion">
+                <label for="ocassion" >New Year</label>
+                <input type="radio" id="ocassion" name="ocassion">
+                <label for="ocassion" >Birthday</label>
+                <input type="radio" id="ocassion" name="ocassion">
+                <label for="ocassion" >Anniversary</label>
+            </div>
+        </div>
+        <hr>
+        
     </div>
-    <div>
-        <label>Amount</label>
-        <input type="text">
-    </div>
-    <div>
-        <label>Quantity</label>
-        <select>
-            <option>0</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-        </select>
-    </div>
-    <div>
-        <label>Delivery Date</label>
-        <input type="radio" name="Today" value="Today">
-        <input type="radio" name="Send Later" value="Send Later">
-        <input type="date" style="visibility: false;">
-    </div>
-    <div>
-        <textarea placeholder="Your Message"></textarea>
-    </div>
+
+    <table>
+        <tr>
+            <th>
+                <label>Amount</label>
+            </th>
+            <th>
+                <label style="margin-left: 100px;">Quantity</label>
+            </th>
+        </tr>
+        <tr>
+            <th>
+                <input type="text" id="amount" name="amount" style="width: 200px;height: 35px;background-color: rgb(215, 215, 223);font-family: 'Times New Roman', Times, serif;font-size: 20px;border:thin;">
+            </th>
+            <th>
+                 <select id="quantity" name="quantity" style="margin-left: 100px;height: 26px;width: 150px;">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </th>
+        </tr>
+        <tr>
+            <th>
+                <label>Delivery Date</label>
+            </th>
+        </tr>
+        <tr>
+            <th>
+                <input type="date" name="date" id="date" style="visibility: false;">
+            </th>
+        </tr>
+        <tr>
+            <th>
+                <textarea id="message" name="message" placeholder="Your Message" style="margin-top: 10px;width:200px"></textarea>
+            </th>
+        </tr>
+    </table>
+    <hr>
     <h2>Enter Sender and Receiver Details</h2>
     <label>Sender Details</label>
-    <div>
-        <input type="text" placeholder="Sender's Name">
-        <input type="text" placeholder="Sender's email">
-        <input type="text" placeholder="Sender's Contact Number">
-        <input type="text" placeholder="Sender's Address">
-    </div>
+    <table>
+        <tr>
+            <th>
+                <input type="text" name="senderName" id="senderName" placeholder="Sender's Name">
+            </th>
+            <th>
+                <input type="text" name="senderEmail" id="senderEmail" placeholder="Sender's email">
+            </th>
+        </tr>
+        <tr>
+            <th>
+                <input type="text" name="senderContactNumber" id="senderContactNumber" placeholder="Sender's Contact Number">
+            </th>
+            <th>
+                <input type="text" name="senderAddress" id="senderAddress" placeholder="Sender's Address">
+            </th>
+        </tr>
+    </table>
+    <hr>
     <label>Receiver Details</label>
+    <table>
+        <tr>
+            <th>
+                <input type="text" name="recieverName" id="recieverName" placeholder="Reciever's Name">
+            </th>
+            <th>
+                 <input type="text" name="recieverEmail" id="recieverEmail" placeholder="Reciever's email">
+            </th>
+        </tr>
+        <tr>
+            <th>
+                <input type="text" name="recieverContactNumber" id="recieverContactNumber" placeholder="Reciever's Contact Number">
+            </th>
+            <th>
+                <input type="text" name="recieverAddress" id="recieverAddress" placeholder="Reciever's Address">
+            </th>
+        </tr>
+    </table>
+   <hr>
     <div>
-        <input type="text" placeholder="Reciever's Name">
-        <input type="text" placeholder="Reciever's email">
-        <input type="text" placeholder="Reciever's Contact Number">
-        <input type="text" placeholder="Reciever's Address">
+        <button style="margin-left: 140px; background-color: rgb(88, 88, 196); width: 200px;color: white;font-size: 15px;font-family: 'Times New Roman', Times, serif;">Generate Gift Card</button>
     </div>
-    <label>Preview gift card</label>
-    <div>
-        <button>Submit</button>
     </div>
 </form>
