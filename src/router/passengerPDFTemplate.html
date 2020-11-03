@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <mate charest="utf-8" />
+    </head>
+    <body style="background-color: lightsteelblue;">
+        <h1 style="margin-left : 400px;color:navy;">FLY DREAM AIR</h1>
+        <br>
+            <ul style="text-decoration: none;list-style-type: none">
+                {{#each Passenger}}
+            <div style="margin-left : 200px">
+                <li>
+                   
+                    <h2>Traveller Name  :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{this.passengerFirstName}}</h2>
+           
+                </li>
+            </div>
+               
+                <br>
+                <div style="margin-left : 200px">
+                    <li>
+                        <h2>Traveller Last Name :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{this.passengerLastName}}</h2>
+                     
+                    </li>
+                </div>
+                
+                <br>
+                <li>Flight Id : {{this.flightId}}</li>
+                <br>
+                <li>Mobile Number : {{this.mobileNumber}}</li>
+                <br>
+                <li>Passport Number : {{this.passengerPassportNumber}}</li>
+                <br>
+                <li>Passport Name : {{this.passengerPassportName}}</li>
+                <br>
+                <li>Flight Status : {{this.flightStatus}}</li>
+                <br>
+                <li>Flight Seat : {{this.flightSeat}}</li>
+        {{/each}}
+        </ul>
+    </body>
+</html>

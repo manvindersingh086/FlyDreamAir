@@ -113,7 +113,8 @@ function addAdult(flightType,adultCount)
 
      var td6    = document.createElement('th')
      var input5 = document.createElement('input');
-     input5.setAttribute('type','text');
+     input5.setAttribute('type','date');
+     input5.setAttribute('name','DOB');
      input5.setAttribute('style','height:30px');
      input5.setAttribute('id','passenger');
      td6.appendChild(input5);

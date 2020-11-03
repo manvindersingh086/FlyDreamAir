@@ -1,5 +1,5 @@
 <body>
-    <form name="passenger" action="/seatSelection"  onsubmit="return validatePassenger('{{adultCount}}')" method="post">
+    <form name="passenger" action="/seatSelection?flightId={{flightId}}"  onsubmit="return validatePassenger('{{adultCount}}')" method="post">
         <div class="flightContainer">
             <div>
                 <h2 style="padding-left: 240px;">Traveller Details</h2>
@@ -57,8 +57,8 @@
                            <label>Mobile Number</label>
                            <label style="padding-left: 150px;">Email</label>
                            <br></br>
-                           <input type="text" id="mobileNumber" style="width:180px;height:32px;" placeholder="Mobile Number">
-                           <input type="text" id="emailId" style="width:180px;height:32px;margin-left: 70px;" placeholder="Email">
+                           <input type="text" id="mobileNumber" name="mobileNumber" style="width:180px;height:32px;" placeholder="Mobile Number">
+                           <input type="text" id="emailId" name="emailId" style="width:180px;height:32px;margin-left: 70px;" placeholder="Email">
                        </div>
                        <hr>
                    </div>
