@@ -6,37 +6,107 @@
     <body style="background-color: lightsteelblue;">
         <h1 style="margin-left : 400px;color:navy;">FLY DREAM AIR</h1>
         <br>
-            <ul style="text-decoration: none;list-style-type: none">
+      
                 {{#each Passenger}}
-            <div style="margin-left : 200px">
-                <li>
-                   
-                    <h2>Traveller Name  :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{this.passengerFirstName}}</h2>
-           
-                </li>
-            </div>
-               
-                <br>
-                <div style="margin-left : 200px">
-                    <li>
-                        <h2>Traveller Last Name :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{this.passengerLastName}}</h2>
-                     
-                    </li>
+                <div>
+                    <h2>Traveller Details</h2>
                 </div>
-                
-                <br>
-                <li>Flight Id : {{this.flightId}}</li>
-                <br>
-                <li>Mobile Number : {{this.mobileNumber}}</li>
-                <br>
-                <li>Passport Number : {{this.passengerPassportNumber}}</li>
-                <br>
-                <li>Passport Name : {{this.passengerPassportName}}</li>
-                <br>
-                <li>Flight Status : {{this.flightStatus}}</li>
-                <br>
-                <li>Flight Seat : {{this.flightSeat}}</li>
+                <table style="border: 1px solid;width: 100%;">
+                    <tr>
+                    <th style="padding-left: 20px;">
+                        <label>Traveller Name</label>
+                    </th>
+                    <th style="padding-left: 20px;">
+                        <label> Last Name</label>
+                    </th>
+                    <th style="padding-left: 20px;">
+                        <label> Passport Number</label>
+                    </th>
+                    <th style="padding-left: 20px;">
+                        <label>Passport Name</label>
+                    </th>
+                    <th style="padding-left: 20px;">
+                        <label>Mobile Number</label>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="padding-left: 20px;">{{this.passengerFirstName}}</th>
+                    <th style="padding-left: 20px;">{{this.passengerLastName}}</th>
+                    <th style="padding-left: 20px;">{{this.passengerPassportNumber}}</th>
+                    <th style="padding-left: 20px;">{{this.passengerPassportName}}</th>
+                    <th style="padding-left: 20px;">{{this.mobileNumber}}</th>
+                </tr>
+            </table >
+            <div>
+                <h2>Flight Details</h2>
+            </div>
+            <table style="border: 1px solid;width: 100%;">
+                <tr>
+                    <th style="padding-left: 15px;">
+                        <label>Booking Id</label>
+                    </th>
+                    <th style="padding-left: 15px;">
+                        <label>Airline</label>
+                    </th>
+                    <th style="padding-left: 15px;">
+                        <label>Origin City</label>
+                    </th>
+                    <th style="padding-left: 15px;">
+                        <label>Destination City</label>
+                    </th>
+                    <th style="padding-left: 15px;">
+                        <label>Departure Date</label>
+                     </th>
+                    <th style="padding-left: 15px;">
+                        <label>Flight Type</label>
+                    </th>
+                    <th style="padding-left: 15px;">
+                        <label>Flight Class</label>
+                    </th>
+                    <th style="padding-left: 15px;">
+                        <label>Flight Status</label>
+                    </th>
+                    <th style="padding-left: 15px;">
+                        <label>Flight PNR Number</label>
+                    </th>
+                    <th style="padding-left: 15px;">
+                        <label>Flight Seat</label>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="padding-left: 15px;">
+                        {{this.bookingId}}
+                    </th>
+                    <th style="padding-left: 15px;">
+                        {{this.flightAirlineName}}
+                    </th>
+                    <th style="padding-left: 15px;">
+                        {{this.origin}}
+                    </th>
+                    <th style="padding-left: 15px;">
+                        {{this.destination}}
+                    </th>
+                    <th style="padding-left: 15px;">
+                        {{this.departureDate}}
+                    </th>
+                    <th style="padding-left: 15px;">
+                        {{this.flightType}}
+                    </th>
+                    <th style="padding-left: 15px;">
+                        {{this.flightClass}}
+                    </th>
+                    <th style="padding-left: 15px;">
+                        {{this.flightStatus}}
+                    </th>
+                    <th style="padding-left: 15px;">
+                        {{this.pnrNumber}}
+                    </th>
+                    <th style="padding-left: 15px;">
+                        {{this.flightSeat}}
+                    </th>
+                </tr>
+            </table>
         {{/each}}
-        </ul>
+       
     </body>
 </html>

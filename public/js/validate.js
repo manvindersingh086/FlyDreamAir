@@ -30,11 +30,8 @@ function validateSignUp(type)
         alert('Password and Confirm Password should be same!')
         return false;
     }
-    // if(password.value == "" || email.value == "" || password.value == "" || confirmPassword == "")
-    // {
-    //     alert("Please fill all the details!");
-    //     return false;
-    // }
+
+
     return true;
 }
 

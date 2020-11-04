@@ -2,15 +2,90 @@
 <html>
     <head>
         <mate charest="utf-8" />
-        <title>Gift Card!</title>
     </head>
-    <body>
-        <h1>Gift Card</h1>
-        <ul>
-            {{#each giftCard}}
-            <li>Name: {{this.senderName}}</li>
-            <br>
+    <body style="background-color: lightsteelblue;">
+        <h1 style="margin-left : 400px;color:navy;">FLY DREAM AIR</h1>
+        <br>
+      
+                {{#each giftCard}}
+                <div>
+                    <h2>Gift Card</h2>
+                </div>
+                <table style="border: 1px solid;width: 100%;">
+                    <tr>
+                    <th style="padding-left: 20px;">
+                        <label>Occassion</label>
+                    </th>
+                    <th style="padding-left: 20px;">
+                        <label> Amount</label>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="padding-left: 20px;">{{this.occassion}}</th>
+                    <th style="padding-left: 20px;">$ {{this.amount}}</th>
+                </tr>
+            </table >
+            <div>
+                <h2>Sender Details</h2>
+            </div>
+            <table style="border: 1px solid;width: 100%;">
+                <tr>
+                    <th style="padding-left: 15px;">
+                        <label>Sender Name</label>
+                    </th>
+                    <th style="padding-left: 15px;">
+                        <label>Sender Email</label>
+                    </th>
+                    <th style="padding-left: 15px;">
+                        <label>Sender Address</label>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="padding-left: 15px;">
+                        {{this.senderName}}
+                    </th>
+                    <th style="padding-left: 15px;">
+                        {{this.senderEmail}}
+                    </th>
+                    <th style="padding-left: 15px;">
+                        {{this.senderAddress}}
+                    </th>
+                </tr>
+                </table>
+                <div>
+                    <h2>Reciever Details</h2>
+                </div>
+                <table style="border: 1px solid;width: 100%;">
+                    <tr>
+                        <th style="padding-left: 15px;">
+                            <label>Reciever Name</label>
+                        </th>
+                        <th style="padding-left: 15px;">
+                            <label>Reciever Email</label>
+                        </th>
+                        <th style="padding-left: 15px;">
+                            <label>Reciever Address</label>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th style="padding-left: 15px;">
+                            {{this.recieverName}}
+                        </th>
+                        <th style="padding-left: 15px;">
+                            {{this.recieverEmail}}
+                        </th>
+                        <th style="padding-left: 15px;">
+                            {{this.recieverAddress}}
+                        </th>
+                    </tr>
+            </table>
+            <div>
+                    <label>Message</label>
+            </div>
+            <div>
+                {{this.message}}
+            </div>
         {{/each}}
-        </ul>
+       
     </body>
 </html>

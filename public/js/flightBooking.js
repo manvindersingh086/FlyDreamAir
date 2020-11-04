@@ -24,6 +24,7 @@ function validateDate(dateType)
         if(new Date(departureDate)<date)
         {
             alert('Invalid Date !');
+            document.getElementById('departureDate').value = "";
         }
     }
     
@@ -33,7 +34,8 @@ function validateDate(dateType)
         var returnDate = document.getElementById('returnDate').value;
         if(returnDate < departureDate)
         {
-            alert('Invalid Date Selection!')
+            alert('Invalid Date Selection!');
+            document.getElementById('returnDate').value = "";
         }
     }
 }
@@ -273,4 +275,50 @@ function validateSeats(passengerCount)
 
     return true;
     
+}
+
+function validateGiftCard()
+{
+    const occassion = document.getElementById('ocassion').value;
+    const amount = document.getElementById('amount').value;
+    const quantity = document.getElementById('quantity').value;
+    const date = document.getElementById('date').value;
+    const msg = document.getElementById('message').value;
+    const sendrName = document.getElementById('senderName').value;
+    const sendrEmail = document.getElementById('senderEmail').value;
+    const sendrContactNumber = document.getElementById('senderContactNumber').value;
+    const sendrAddress =  document.getElementById('senderAddress').value;
+    const recName = document.getElementById('recieverName').value;
+    const recEmail = document.getElementById('recieverEmail').value;
+    const recContactNumber = document.getElementById('recieverContactNumber').value;
+    const recAddress = document.getElementById('recieverAddress').value;
+
+    if(occassion == "" || amount == "" || quantity == "" || date == "" || msg == "" || sendrName == "" || senderEmail == ""
+    || sendrEmail == "" || sendrContactNumber == "" || sendrAddress == "" || recName == "" || recEmail == "" || recContactNumber == "" || recAddress == "")
+    {
+        alert("Enter all the details!")
+        return false;
+    }
+    return true;
+}
+
+function validateNumber(field)
+{
+    if(isNaN(field.value))
+    {
+        alert('Please enter number!');
+        field.value =  "";
+    }
+}
+
+function validateGiftCardDate()
+{
+    var date = new Date();
+
+        var departureDate = document.getElementById('date').value;
+        if(new Date(departureDate)<date)
+        {
+            alert('Invalid Date !');
+            document.getElementById('date').value = "";
+        }
 }

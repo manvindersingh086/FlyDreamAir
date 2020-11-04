@@ -158,8 +158,10 @@ router.post('/completePayment',urlencodor, async (req,res) => {
             PASSENGER.flightStatus = "booked";
             PASSENGER.flightSeat = "1B";
             await PASSENGER.save();
-
-
+            const passg = await Passenger.find({email:sesPassenger.email})
+            const bookingId = passg[0]._id;
+            const flights = await flightInfo.find({_id:ObjectId(sesPassenger.flightId)})
+            
             //PDF CREATION CODE BEGINS
 
             var html = fs.readFileSync(path.join(__dirname)+'/passengerPDFTemplate.html', 'utf8');
@@ -181,18 +183,27 @@ router.post('/completePayment',urlencodor, async (req,res) => {
                 }
             }
             };
-            //console.log(req.session.passenger)
+            
              var passng = [{
                 passengerFirstName : PASSENGER.passengerFirstName,
                 passengerLastName  : PASSENGER.passengerLastName,
-                flightId : PASSENGER.flightId,
                 mobileNumber : PASSENGER.mobileNumber,
                 passengerPassportNumber : PASSENGER.passengerPassportNumber,
                 passengerPassportName : PASSENGER.passengerPassportName,
                 flightStatus : PASSENGER.flightStatus,
-                flightSeat : PASSENGER.flightSeat
+                flightSeat : PASSENGER.flightSeat,
+                flightType : flights[0].flightType,
+                flightClass : flights[0].flightClass,
+                departureDate : flights[0].departureDate,
+                flightType : flights[0].flightT,
+                origin : flights[0].origin,
+                destination : flights[0].destination,
+                flightAirlineName : flights[0].flightAirlineName,
+                pnrNumber : flights[0].pnrNumber,
+                bookingId : bookingId
+
              }]
-            console.log(PASSENGER);
+           
             var document = {
                 html: html,
                 data: {
@@ -203,10 +214,10 @@ router.post('/completePayment',urlencodor, async (req,res) => {
         
             pdf.create(document, options)
             .then(res => {
-                console.log(res)
+                res.render('successFulBooking',{layout : '../layouts/index'})
             })
             .catch(error => {
-                console.error(error)
+                res.render('successFulBooking',{layout : '../layouts/index'})
             });
             //PDF CREATION CODE ENDS
         }

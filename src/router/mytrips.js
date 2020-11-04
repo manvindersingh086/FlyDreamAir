@@ -9,7 +9,10 @@ const User = require('../models/User')
 const Trips = require('../models/trips')
 const urlencodor =bodyparser.urlencoded({extended : true});
 const flightInfo = require('../models/flightInformation');
+const { request } = require('express')
 var ObjectId = require('mongodb').ObjectID;
+const Passenger = require('../models/passenger')
+const confirm = require('node-popup');
 
 router.get('/myTrips',urlencodor,async (req,res) => {
 
@@ -17,19 +20,39 @@ router.get('/myTrips',urlencodor,async (req,res) => {
        
     
         const email = req.query.email;
-        const user = await User.findOne({email});
-        const userId = user._id;
-        const trips = await Trips.find({userId});
-        const flightId = trips[0].flightId;
-        const flights = await flightInfo.find({_id:ObjectId(flightId)});
+       // const user = await User.findOne({email});
+       // const userId = user._id;
+      //  const trips = await Trips.find({userId});
+      //  const flightId = trips[0].flightId;
+        //const flights = await flightInfo.find({_id:ObjectId(flightId)});
     
-        res.render('userTrips',{layout : '../layouts/index',flightId:flightId,email:email,trips:trips,flights:flights})
+        res.render('myTrips',{layout : '../layouts/index',email:email})
+        //res.render('userTrips',{layout : '../layouts/index',flightId:flightId,email:email,trips:trips,flights:flights})
     }
     catch(e)
     {
         console.log(e);
     }
 
+})
+
+router.post('/myTrips1',urlencodor, async (req,res) => {
+    try{
+        const tripsType = req.body.tripOptions;
+        const userEmail = req.session.useremail;
+        const flightIds = await Passenger.find({userId:userEmail,flightStatus:tripsType}).select('flightId');
+        var flightid=[flightIds.length];
+        for(i=0;i<flightIds.length;i++)
+        {
+            flightid[i] = ObjectId(flightIds[i].flightId)
+        }
+        flights = await flightInfo.find({_id:flightid})
+        res.render('userTrips',{layout : '../layouts/index',flights:flights});   
+    }
+    catch(e)
+    {
+        console.log(e);
+    }
 })
 
 router.get('/inFlightServices',urlencodor, async (req,res) => {

@@ -20,19 +20,18 @@ router.post('/user',urlencodor,async (req,res) => {
           user.password = req.body.password;
           
           //sendWelcomeEmail(req.body.email,req.body.name);
-          user.save()
+          await user.save()
           const token= await user.generateToken();
-          res.session.success = true;
-          
+          res.render('successSignUp',{layout : '../layouts/index',email:req.body.email,tokens:user.tokens,token:token})
           
      }
      catch(e)
      {
-         // res.status(400).send(e)
+         console.log(e);
          res.render('errorSignUp',{layout : '../layouts/index'})
      }
 
-     res.render('home',{layout : '../layouts/index',email:req.body.email,tokens:user.tokens,token:token})
+     
 });
 
 router.post('/userLogin',urlencodor,async (req,res) => {
@@ -44,7 +43,7 @@ router.post('/userLogin',urlencodor,async (req,res) => {
           const user = await User.findUserByCredentials(req.body.email,req.body.password)
           const token = await user.generateToken()
           
-          res.render('userHome',{layout : '../layouts/index',email:req.body.email,tokens:user.tokens,token:token})
+          res.render('userHome',{layout : '../layouts/index',email:req.body.email,tokens:user.tokens,token:token,username:user.name})
      }
      catch(e)
      {
@@ -78,7 +77,9 @@ router.post('/userUpdate',urlencodor, async (req,res) => {
      }
 });
 
-
+router.get('/userHome',urlencodor, async (req,res) => {
+     res.render('userHome',{layout : '../layouts/index'});
+})
 
 router.post('/logout',urlencodor,async (req,res) => {
      

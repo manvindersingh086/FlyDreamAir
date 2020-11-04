@@ -1,4 +1,4 @@
-<form action="/paymentPage" method="post">
+<form action="/paymentPage" onsubmit="return validateGiftCard()" method="post">
     <div class="flightdetailsContainer" style="margin-left: 400px; height: 820px;width:520px">
         <div>
                 <h2 style="padding-left: 190px;">Gift Cards</h2>
@@ -8,14 +8,14 @@
         <div>
             <h3>Select Occassion</h2>
             <div>
-                <input type="radio" id="ocassion" name="ocassion">
-                <label for="ocassion" >Christmas</label>
-                <input type="radio" id="ocassion" name="ocassion">
-                <label for="ocassion" >New Year</label>
-                <input type="radio" id="ocassion" name="ocassion">
-                <label for="ocassion" >Birthday</label>
-                <input type="radio" id="ocassion" name="ocassion">
-                <label for="ocassion" >Anniversary</label>
+                <input type="radio" id="occassion" name="occassion" value="christmas">
+                <label for="occassion" >Christmas</label>
+                <input type="radio" id="occassion" name="occassion" value="newYear">
+                <label for="occassion" >New Year</label>
+                <input type="radio" id="occassion" name="occassion" value="Birthday">
+                <label for="occassion" >Birthday</label>
+                <input type="radio" id="occassion" name="occassion" value="anniversary">
+                <label for="occassion" >Anniversary</label>
             </div>
         </div>
         <hr>
@@ -33,11 +33,10 @@
         </tr>
         <tr>
             <th>
-                <input type="text" id="amount" name="amount" style="width: 200px;height: 35px;background-color: rgb(215, 215, 223);font-family: 'Times New Roman', Times, serif;font-size: 20px;border:thin;">
+                <input type="text" onchange="validateNumber(this)" id="amount" name="amount" style="width: 200px;height: 35px;background-color: rgb(215, 215, 223);font-family: 'Times New Roman', Times, serif;font-size: 20px;border:thin;">
             </th>
             <th>
                  <select id="quantity" name="quantity" style="margin-left: 100px;height: 26px;width: 150px;">
-                    <option value="0">0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -53,7 +52,7 @@
         </tr>
         <tr>
             <th>
-                <input type="date" name="date" id="date" style="visibility: false;">
+                <input type="date" name="date" id="date" style="visibility: false;" onchange="validateGiftCardDate()">
             </th>
         </tr>
         <tr>
@@ -76,7 +75,7 @@
         </tr>
         <tr>
             <th>
-                <input type="text" name="senderContactNumber" id="senderContactNumber" placeholder="Sender's Contact Number">
+                <input type="text" onchange="validateNumber(this)" name="senderContactNumber" id="senderContactNumber" placeholder="Sender's Contact Number">
             </th>
             <th>
                 <input type="text" name="senderAddress" id="senderAddress" placeholder="Sender's Address">
@@ -96,7 +95,7 @@
         </tr>
         <tr>
             <th>
-                <input type="text" name="recieverContactNumber" id="recieverContactNumber" placeholder="Reciever's Contact Number">
+                <input type="text" onchange="validateNumber(this)" name="recieverContactNumber" id="recieverContactNumber" placeholder="Reciever's Contact Number">
             </th>
             <th>
                 <input type="text" name="recieverAddress" id="recieverAddress" placeholder="Reciever's Address">

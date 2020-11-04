@@ -9,6 +9,7 @@ const bodyparser = require('body-parser')
 const urlencodor =bodyparser.urlencoded({extended : true});
 const pdf= require('pdf-creator-node');
 const fs = require('fs')
+const creditCard = require('../models/creditCard')
 
 router.get('/services',urlencodor, async (req,res) => {
     res.render('services',{layout : '../layouts/index'})
@@ -52,53 +53,79 @@ router.post('/paymentPage',urlencodor, async (req,res) => {
     giftCard.recieverContactNumber = recieverContactNumber;
 
     req.session.giftCard = giftCard;
-
-    res.render('paymentPage',{layout : '../layouts/index'})
+    req.session.giftCardAmount = amount;
+    res.render('paymentPageGiftCard',{layout : '../layouts/index',amount:amount})
 
     
 })
 
-router.post('/completePayment',urlencodor, async (req,res) => {
-    console.log(path.join(__dirname)+'/giftCardPdfTemplate.html');
-    var html = fs.readFileSync(path.join(__dirname)+'/giftCardPdfTemplate.html', 'utf8');
+router.post('/completePaymentGiftCard',urlencodor, async (req,res) => {
 
-    var options = {
-        format: "A3",
-        orientation: "portrait",
-        border: "10mm",
-        header: {
-            height: "45mm",
-            contents: '<div style="text-align: center;">Author: Shyam Hajare</div>'
-        },
-        "footer": {
-            "height": "28mm",
-            "contents": {
-            first: 'Cover page',
-            2: 'Second page', // Any page number is working. 1-based index
-            default: '<span style="color: #444;">{{page}}</span>/<span>{{pages}}</span>', // fallback value
-            last: 'Last Page'
+    const creditCardNumber = req.body.cardNumber;
+    const cardExpiry = req.body.cardExpiry;
+    const cardCVV = req.body.cardCVC;
+
+    const creditCardFetch = await creditCard.find({creditCardNumber:creditCardNumber})
+
+    if(!(creditCardFetch == ""))
+    {
+        console.log(path.join(__dirname)+'/giftCardPdfTemplate.html');
+        var html = fs.readFileSync(path.join(__dirname)+'/giftCardPdfTemplate.html', 'utf8');
+    
+        var options = {
+            format: "A3",
+            orientation: "portrait",
+            border: "10mm",
+            header: {
+                height: "45mm",
+                contents: '<div style="text-align: center;">Author: Shyam Hajare</div>'
+            },
+            "footer": {
+                "height": "28mm",
+                "contents": {
+                first: 'Cover page',
+                2: 'Second page', // Any page number is working. 1-based index
+                default: '<span style="color: #444;">{{page}}</span>/<span>{{pages}}</span>', // fallback value
+                last: 'Last Page'
+            }
         }
-    }
-    };
-    console.log(req.session.giftCard.senderName)
-    var giftCardSenderName = [{
-        senderName : req.session.giftCard.senderName
-    }]
-    var document = {
-        html: html,
-        data: {
-            giftCard: giftCardSenderName
-        },
-        path: "./output.pdf"
-    };
+        };
 
-    pdf.create(document, options)
-    .then(res => {
-        console.log(res)
-    })
-    .catch(error => {
-        console.error(error)
-    });
+         req.session.giftCard;
+
+        var giftCard = [{
+            occassion : req.session.giftCard.occassion,
+            amount  : req.session.giftCard.amount,
+            message : req.session.giftCard.message,
+            senderName : req.session.giftCard.senderName,
+            senderEmail : req.session.giftCard.senderEmail,
+            senderAddress : req.session.giftCard.senderAddress,
+            recieverName : req.session.giftCard.recieverName,
+            recieverEmail : req.session.giftCard.recieverEmail,
+            recieverAddress : req.session.giftCard.recieverAddress
+         }]
+        // var giftCardSenderName = [{
+        //     giftCard : giftCard
+        // }]
+        var document = {
+            html: html,
+            data: {
+                giftCard: giftCard
+            },
+            path: "./GiftCard.pdf"
+        };
+    
+        pdf.create(document, options)
+        .then(res => {
+            console.log(res)
+        })
+        .catch(error => {
+            console.error(error)
+        });
+
+    }
+
+   
 })
 
 module.exports = router;
