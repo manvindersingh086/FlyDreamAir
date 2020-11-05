@@ -22,8 +22,7 @@ const passengerSchema = new mongoose.Schema({
         type : String
     },
     passengerDOB : {
-        type : String,
-        required :true
+        type : String
     },
     passengerGender : {
         type:String,

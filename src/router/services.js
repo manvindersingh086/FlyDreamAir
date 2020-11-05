@@ -120,10 +120,10 @@ router.post('/completePaymentGiftCard',urlencodor, async (req,res) => {
     
         pdf.create(document, options)
         .then(res => {
-            console.log(res)
+            res.render('succefulCardBooking',{layout : '../layouts/index'})
         })
         .catch(error => {
-            console.error(error)
+            res.render('succefulCardBooking',{layout : '../layouts/index'})
         });
 
     }

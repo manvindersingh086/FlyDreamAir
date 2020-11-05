@@ -11,12 +11,6 @@ const feedbackSchema = new mongoose.Schema({
         lowercase : true,
         trim : true,
         required : true,
-        validate(value){
-            if(!validator.isEmail(value))
-            {
-                throw new Error('Email is invalid!')
-            }
-        } 
     },
     type : {
         type: String,

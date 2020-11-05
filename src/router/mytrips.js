@@ -143,7 +143,7 @@ router.get('/confirmToCancel',urlencodor, async (req,res) => {
         const flightId = req.query.flightId;
         const useremail = req.session.useremail;
         const passenger = await Passenger.updateOne({userId:useremail,flightId:flightId},{$set: { "flightStatus" : "Cancelled"}})
-        console.log(passenger);
+        res.render('successfulCancelled',{layout: '../layouts/index'})
     }
     catch(e)
     {
