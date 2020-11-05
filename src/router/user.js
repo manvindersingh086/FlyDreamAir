@@ -83,6 +83,6 @@ router.get('/userHome',urlencodor, async (req,res) => {
 
 router.post('/logout',urlencodor,async (req,res) => {
      
-    console.log("Hiii")
+     res.render('logout',{layout : '../layouts/index'});
 })
 module.exports = router;
