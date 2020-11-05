@@ -47,7 +47,7 @@ router.post('/myTrips1',urlencodor, async (req,res) => {
             flightid[i] = ObjectId(flightIds[i].flightId)
         }
         flights = await flightInfo.find({_id:flightid})
-        res.render('userTrips',{layout : '../layouts/index',flights:flights});   
+        res.render('userTrips',{layout : '../layouts/index',flights:flights,tripOption : tripsType});   
     }
     catch(e)
     {
@@ -58,7 +58,6 @@ router.post('/myTrips1',urlencodor, async (req,res) => {
 router.get('/inFlightServices',urlencodor, async (req,res) => {
     try{
         const flightId = req.query.flightId;
-        console.log(flightId);
         const email = req.session.useremail;
         res.render('inFlightServices',{layout: '../layouts/index',flightId:flightId,email:email})
     }

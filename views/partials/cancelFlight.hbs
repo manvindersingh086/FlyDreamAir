@@ -4,7 +4,7 @@
         <div class="flightContainer" style="width:65%">
             
             <div>
-                <h2 style="padding-left: 240px;">My Trips</h2>
+                <h2 style="padding-left: 340px;">Cancel Flight</h2>
                 <hr>
             </div>
             
@@ -61,11 +61,11 @@
                         <label for="{{this.id}}" style="padding-left: 30px;">${{this.flightPrice}}</label>
                     </th>
                     <th>
-                        <div style="width:170px;padding-bottom: 5px;padding-top: 5px;">
-                             <a onclick="return validateInFlightButtons('{{tripOption}}')" href='/inFlightServices?flightId={{this.id}}' style="text-decoration: none; padding-top: 3px; padding-bottom: 3px; padding-right: 6px;padding-left: 6px; background-color: rgb(88, 88, 196); width: 150px;color: white;font-size: 20px;font-family: 'Times New Roman', Times, serif;">In-flight Services</a> 
+                        <div style="width:200px;padding-bottom: 5px;padding-top: 5px;">
+                             <a  href='/confirmToCancel?flightId={{this.id}}' style="text-decoration: none; padding-top: 3px; padding-bottom: 3px; padding-right: 6px;padding-left: 6px; background-color: rgb(88, 88, 196); width: 150px;color: white;font-size: 20px;font-family: 'Times New Roman', Times, serif;">Confirm Cancellation</a> 
                         </div>
-                        <div style="margin-left: 10px;margin-bottom: 5px;">
-                             <a onclick="return validateCancelButtons('{{tripOption}}')" href="/cancelFlightBooking?flightId={{this.id}}" style="text-decoration: none; padding-top: 3px; padding-bottom: 3px; padding-right: 6px;padding-left: 6px; background-color: rgb(88, 88, 196); width: 150px;color: white;font-size: 20px;font-family: 'Times New Roman', Times, serif;">Cancel Flight</a> 
+                        <div style="margin-left: 50px;margin-bottom: 5px;">
+                             <a  href="/userHome" style="text-decoration: none; padding-top: 3px; padding-bottom: 3px; padding-right: 6px;padding-left: 6px; background-color: rgb(88, 88, 196); width: 150px;color: white;font-size: 20px;font-family: 'Times New Roman', Times, serif;">Cancel</a> 
 
                         </div>
                     </th>

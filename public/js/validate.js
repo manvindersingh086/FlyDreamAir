@@ -85,3 +85,24 @@ function validateFeedback()
     return true;
 }
 
+function validateCancelButtons(tripOption)
+{
+    var dd = document.getElementById('tripO').value;
+   if(dd == 'Cancelled')
+   {
+       alert('Already cancelled flight!');
+       return false;
+   }
+   return true;
+}
+
+function validateInFlightButtons(tripOption)
+{
+    var dd = document.getElementById('tripO').value;
+   if(dd == 'Cancelled')
+   {
+       alert('You cannot book In-flight services for cancelled flight!');
+       return false;
+   }
+   return true;
+}

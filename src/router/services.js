@@ -9,7 +9,9 @@ const bodyparser = require('body-parser')
 const urlencodor =bodyparser.urlencoded({extended : true});
 const pdf= require('pdf-creator-node');
 const fs = require('fs')
+const flightInfo = require('../models/flightInformation')
 const creditCard = require('../models/creditCard')
+var ObjectId = require('mongodb').ObjectID;
 
 router.get('/services',urlencodor, async (req,res) => {
     res.render('services',{layout : '../layouts/index'})
@@ -126,6 +128,15 @@ router.post('/completePaymentGiftCard',urlencodor, async (req,res) => {
     }
 
    
+})
+
+router.get('/cancelFlightBooking',urlencodor,async (req,res) => {
+
+    const flightId = req.query.flightId;
+    const flights = await flightInfo.find({_id:Object(flightId)})
+    console.log(flights);
+    res.render('cancelFlight',{layout : '../layouts/index',flights:flights})
+    
 })
 
 module.exports = router;
