@@ -76,7 +76,6 @@ function addAdult(flightType,adultCount)
      th3.innerHTML += "<label>Gender</label>";
      th4.innerHTML += "<label>Meal</label>";
      th5.innerHTML += "<label>Wheel Chair</label>";
-     th6.innerHTML += "<label>Date of Birth</label>";
     
    
 
@@ -85,7 +84,6 @@ function addAdult(flightType,adultCount)
      tr1.appendChild(th3);
      tr3.appendChild(th4);
      tr3.appendChild(th5);
-     tr3.appendChild(th6);
      
      var td1    = document.createElement('th')
      var input = document.createElement('input');
@@ -113,20 +111,12 @@ function addAdult(flightType,adultCount)
      var td5    = document.createElement('th')
      td5.innerHTML += "<select id='wheelChair' name='wheelChair' style='height:30px;width:180px'><option>Not-Required</option><option>Required</option></select>";
 
-     var td6    = document.createElement('th')
-     var input5 = document.createElement('input');
-     input5.setAttribute('type','date');
-     input5.setAttribute('name','DOB');
-     input5.setAttribute('style','height:30px');
-     input5.setAttribute('id','passenger');
-     td6.appendChild(input5);
 
      tr2.appendChild(td1);
      tr2.appendChild(td2);
      tr2.appendChild(td3);
      tr4.appendChild(td4);
      tr4.appendChild(td5);
-     tr4.appendChild(td6);
 
      table.appendChild(tr1);
      table.appendChild(tr2);

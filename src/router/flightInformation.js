@@ -70,6 +70,7 @@ router.post('/flightTravellerDetails',urlencodor, async (req,res) => {
         const adultCount = req.session.adult;
         const flightType = req.session.flightType;
         const flights = await flightInfo.find({_id:ObjectId(req.query.flightId)})
+        req.session.flightAmount = flights[0].flightPrice;
         res.render('travellerDetails',{layout : '../layouts/index',adultCount:adultCount,flightType:flightType,flights:flights,flightId:flightId})
      
     }
@@ -110,7 +111,7 @@ router.post('/seatSelection',urlencodor, async (req,res) => {
         passngr.userId = useremail;
 
         req.session.passenger = passngr;
-     
+      
         res.render('seatSelection',{layout : '../layouts/index',adult:adult})
      
     }
@@ -125,7 +126,9 @@ router.post('/seatSelectionPaymentPage',urlencodor, async (req,res) => {
         
        
         //const flights = await creditCard.find({})
-        res.render('paymentPage',{layout : '../layouts/index'})
+        const flightAmount = req.session.flightAmount;
+        console.log(flightAmount);
+        res.render('paymentPage',{layout : '../layouts/index',flightAmount:flightAmount})
     }
     catch(e)
     {

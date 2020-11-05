@@ -1,10 +1,10 @@
 
         
        
-        <div class="flightContainer" style="width:65%">
+        <div class="flightContainer" style="height:200px;width:58%">
             
             <div>
-                <h2 style="padding-left: 240px;">Upcoming Trips</h2>
+                <h2 style="padding-left: 280px;">Cancelled Trips</h2>
                 <hr>
             </div>
             
@@ -59,15 +59,6 @@
                     </th>
                     <th>
                         <label for="{{this.id}}" style="padding-left: 30px;">${{this.flightPrice}}</label>
-                    </th>
-                    <th>
-                        <div style="width:170px;padding-bottom: 5px;padding-top: 5px;">
-                             <a onclick="return validateInFlightButtons('{{tripOption}}')" href='/inFlightServices?flightId={{this.id}}' style="text-decoration: none; padding-top: 3px; padding-bottom: 3px; padding-right: 6px;padding-left: 6px; background-color: rgb(88, 88, 196); width: 150px;color: white;font-size: 20px;font-family: 'Times New Roman', Times, serif;">In-flight Services</a> 
-                        </div>
-                        <div style="margin-left: 10px;margin-bottom: 5px;">
-                             <a onclick="return validateCancelButtons('{{tripOption}}')" href="/cancelFlightBooking?flightId={{this.id}}" style="text-decoration: none; padding-top: 3px; padding-bottom: 3px; padding-right: 6px;padding-left: 6px; background-color: rgb(88, 88, 196); width: 150px;color: white;font-size: 20px;font-family: 'Times New Roman', Times, serif;">Cancel Flight</a> 
-
-                        </div>
                     </th>
                  </tr>
                 </form>

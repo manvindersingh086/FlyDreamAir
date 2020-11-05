@@ -12,6 +12,7 @@ const fs = require('fs')
 const flightInfo = require('../models/flightInformation')
 const creditCard = require('../models/creditCard')
 var ObjectId = require('mongodb').ObjectID;
+const Passenger = require('../models/passenger')
 
 router.get('/services',urlencodor, async (req,res) => {
     res.render('services',{layout : '../layouts/index'})
@@ -137,6 +138,22 @@ router.get('/cancelFlightBooking',urlencodor,async (req,res) => {
     console.log(flights);
     res.render('cancelFlight',{layout : '../layouts/index',flights:flights})
     
+})
+
+router.post('/inFlightServicesBook',urlencodor, async (req,res) => {
+    const lastName = req.body.lastName;
+    const bookingId = req.body.bookingId;
+    
+    const flights = await Passenger.find({flightId:bookingId,passengerLastName:lastName});
+    if(flights != "")
+    {
+        res.render('successfulInFlightServices',{layout : '../layouts/index'})
+    }
+    else
+    {
+        res.render('incorrectDetails',{layout : '../layouts/index'})
+    }
+
 })
 
 module.exports = router;

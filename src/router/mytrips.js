@@ -39,15 +39,48 @@ router.get('/myTrips',urlencodor,async (req,res) => {
 router.post('/myTrips1',urlencodor, async (req,res) => {
     try{
         const tripsType = req.body.tripOptions;
-        const userEmail = req.session.useremail;
-        const flightIds = await Passenger.find({userId:userEmail,flightStatus:tripsType}).select('flightId');
-        var flightid=[flightIds.length];
-        for(i=0;i<flightIds.length;i++)
+        if(tripsType == "booked")
         {
-            flightid[i] = ObjectId(flightIds[i].flightId)
+            const userEmail = req.session.useremail;
+            const flightIds = await Passenger.find({userId:userEmail,flightStatus:tripsType}).select('flightId');
+            console.log(flightIds);
+            if(flightIds != "")
+            {
+                var flightid=[flightIds.length];
+                for(i=0;i<flightIds.length;i++)
+                {
+                    flightid[i] = ObjectId(flightIds[i].flightId)
+                }
+                flights = await flightInfo.find({_id:flightid})
+                res.render('userTrips',{layout : '../layouts/index',flights:flights,tripOption : tripsType}); 
+            }
+            else
+            {
+                res.render('noFlight',{layout : '../layouts/index'}); 
+            }
         }
-        flights = await flightInfo.find({_id:flightid})
-        res.render('userTrips',{layout : '../layouts/index',flights:flights,tripOption : tripsType});   
+        else if(tripsType == "Cancelled")
+        {
+            const userEmail = req.session.useremail;
+            const flightIds = await Passenger.find({userId:userEmail,flightStatus:tripsType}).select('flightId');
+            console.log(flightIds);
+            if(flightIds != "")
+            {
+                var flightid=[flightIds.length];
+                for(i=0;i<flightIds.length;i++)
+                {
+                    flightid[i] = ObjectId(flightIds[i].flightId)
+                }
+                flights = await flightInfo.find({_id:flightid})
+                res.render('cancelledTrips',{layout : '../layouts/index',flights:flights,tripOption : tripsType}); 
+            }
+            else
+            {
+                res.render('noFlight',{layout : '../layouts/index'}); 
+            }
+        }
+        
+          
     }
     catch(e)
     {
@@ -95,6 +128,22 @@ router.get('/mealOnBoard',urlencodor, async (req,res) => {
     try
     {
         res.render('mealOnBoard',{layout: '../layouts/index'})
+    }
+    catch(e)
+    {
+        console.log(e);
+    }
+})
+
+router.get('/confirmToCancel',urlencodor, async (req,res) => {
+
+    try
+    {
+        
+        const flightId = req.query.flightId;
+        const useremail = req.session.useremail;
+        const passenger = await Passenger.updateOne({userId:useremail,flightId:flightId},{$set: { "flightStatus" : "Cancelled"}})
+        console.log(passenger);
     }
     catch(e)
     {
