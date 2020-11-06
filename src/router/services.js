@@ -41,7 +41,9 @@ router.post('/paymentPage',urlencodor, async (req,res) => {
     const recieverName = req.body.recieverName;
     const recieverContactNumber = req.body.recieverContactNumber;
 
-    giftCard.occassion = occassion;
+    
+
+    giftCard.ocassion = occassion;
     giftCard.amount = amount;
     giftCard.quantity = quantity;
     giftCard.date = date;
@@ -95,9 +97,8 @@ router.post('/completePaymentGiftCard',urlencodor, async (req,res) => {
         };
 
          req.session.giftCard;
-
         var giftCard = [{
-            occassion : req.session.giftCard.occassion,
+            occassion : req.session.giftCard.ocassion,
             amount  : req.session.giftCard.amount,
             message : req.session.giftCard.message,
             senderName : req.session.giftCard.senderName,
